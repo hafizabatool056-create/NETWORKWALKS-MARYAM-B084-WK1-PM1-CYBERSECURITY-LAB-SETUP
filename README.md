@@ -36,40 +36,40 @@ This project sets up a cybersecurity testing lab on a personal Windows laptop. O
 ### Step 1: Installed VirtualBox
 Downloaded the latest version from virtualbox.org and installed it with the default options.
 
-![VirtualBox version](images/fig1-virtualbox-version.png)
+![VirtualBox version](fig1-virtualbox-version.png)
 *Figure 1: VirtualBox version shown in Help > About*
 
 ### Step 2: Created the NAT Network
 Opened File > Tools > Network Manager > NAT Networks, created a new network named `NatNetwork` and set the IPv4 prefix to `10.0.0.0/24`.
 
-![NAT Network](images/fig2-nat-network.png)
+![NAT Network](fig2-nat-network.png)
 *Figure 2: NAT Network settings showing 10.0.0.0/24*
 
 ### Step 3: Set up Kali Linux
 Downloaded the Kali VirtualBox image from kali.org and added it to VirtualBox. In Settings > Network, set Adapter 1 to NAT Network and selected `NatNetwork`.
 
-![Kali network adapter](images/fig3-kali-network-adapter.png)
+![Kali network adapter](fig3-kali-network-adapter.png)
 *Figure 3: Kali VM network adapter attached to the NAT Network*
 
 ### Step 4: Enabled clipboard and drag/drop
 In Settings > General > Features, set Shared Clipboard and Drag-and-Drop to Bidirectional.
 
-![Clipboard and drag/drop](images/fig4-clipboard-dragdrop.png)
+![Clipboard and drag/drop](fig4-clipboard-dragdrop.png)
 *Figure 4: General > Features settings*
 
 ### Step 5: Enabled the shared folder
 In Settings > Shared Folders, added the host Downloads folder with Auto-mount and Make Global selected. Inside Kali the share appears under `/media/sf_Downloads`.
 
-![Shared folder setting](images/fig5-shared-folder-setting.png)
+![Shared folder setting](fig5-shared-folder-setting.png)
 *Figure 5: Shared Folders settings in VirtualBox*
 
-![Shared folder in Kali](images/fig6-shared-folder-in-kali.png)
+![Shared folder in Kali](fig6-shared-folder-in-kali.png)
 *Figure 6: Host Downloads files visible inside Kali (`ls /media/sf_Downloads`)*
 
 ### Step 6: Checked the IP address
 Installed the VirtualBox guest tools in Kali, then ran `ip a`. Kali received `10.0.0.3/24` from the NAT Network DHCP server (marked `dynamic`). The required static address `10.0.0.2/24` is still to be configured (see Issues).
 
-![IP address](images/fig7-ip-address.png)
+![IP address](fig7-ip-address.png)
 *Figure 7: Kali network configuration showing 10.0.0.3/24 (DHCP)*
 
 ## Verification
@@ -82,7 +82,7 @@ Installed the VirtualBox guest tools in Kali, then ran `ip a`. Kali received `10
 | Shared folder | `ls /media/sf_Downloads` | Pass: host Downloads files listed |
 | Static IP | `ip a` | Pending: shows 10.0.0.3/24 (DHCP) |
 
-![Ping tests](images/fig8-ping-tests.png)
+![Ping tests](fig8-ping-tests.png)
 *Figure 8: Terminal output of the ping tests*
 
 ## Issues faced and resolution
